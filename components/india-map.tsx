@@ -31,7 +31,6 @@ export default function CoveragePercentage() {
   return (
     <div className="flex flex-col items-center justify-center p-6 bg-white dark:bg-[#1e1e1e] rounded-lg shadow-sm">
       <h2 className="text-2xl font-semibold mb-4 text-[#333333] dark:text-white">
-        Coverage Map
       </h2>
       <div className="flex flex-col md:flex-row items-center gap-8">
         <div className="relative group">
