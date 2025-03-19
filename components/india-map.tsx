@@ -48,7 +48,7 @@ export default function CoveragePercentage() {
           )}
         </div>
         <div className="flex flex-col gap-2">
-          <h3 className="text-lg font-medium text-[#333333] dark:text-white mb-2">Coverage Legend</h3>
+          <h3 className="text-lg font-medium text-[#333333] dark:text-white mb-2"></h3>
           <div className="flex items-center gap-3">
             <div className="w-4 h-4 rounded-full" style={{ backgroundColor: "#FF4500" }}></div>
             <span className="text-sm text-[#666666] dark:text-[#999999]">90%+</span>
