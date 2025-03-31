@@ -157,6 +157,36 @@ export default function DashboardLayout({ children, className }: DashboardLayout
             </SidebarGroup>
 
             <SidebarGroup>
+              <SidebarGroupLabel className="text-[#666666] dark:text-[#999999]">District/Block Wise Information</SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton asChild isActive={pathname === "/dashboard/block-wise-report"}>
+                      <a
+                        href="/dashboard/block-wise-report"
+                        className="text-[#333333] dark:text-white hover:text-[#ff6b00] dark:hover:text-[#ff6b00]"
+                      >
+                        <FileSpreadsheet className="h-4 w-4" />
+                        <span>Block Wise Report</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton asChild isActive={pathname === "/dashboard/district-wise-report"}>
+                      <a
+                        href="/dashboard/district-wise-report"
+                        className="text-[#333333] dark:text-white hover:text-[#ff6b00] dark:hover:text-[#ff6b00]"
+                      >
+                        <FileSpreadsheet className="h-4 w-4" />
+                        <span>District Wise Report</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+
+            <SidebarGroup>
               <SidebarGroupLabel className="text-[#666666] dark:text-[#999999]">Spark Data</SidebarGroupLabel>
               <SidebarGroupContent>
                 <SidebarMenu>

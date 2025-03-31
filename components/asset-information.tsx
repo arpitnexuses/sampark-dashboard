@@ -145,13 +145,13 @@ export default function AssetInformation() {
   const [timeFrame, setTimeFrame] = useState("monthly")
 
   return (
-    <div className="flex flex-col gap-6 w-full">
+    <div className="p-4 md:p-8 pt-6 space-y-4">
       <div>
         <h1 className="text-3xl font-bold tracking-tight text-[#333333] dark:text-white">Asset Information</h1>
         <p className="text-[#666666] dark:text-[#999999]">Track distribution and usage of program assets</p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <Card className="bg-white dark:bg-[#1e1e1e] border-[#e0e0e0] dark:border-[#333333] shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-[#333333] dark:text-white">Sampark TV Distributed</CardTitle>
@@ -206,7 +206,7 @@ export default function AssetInformation() {
         </Card>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card className="bg-white dark:bg-[#1e1e1e] border-[#e0e0e0] dark:border-[#333333] shadow-sm">
           <CardHeader>
             <CardTitle className="text-[#333333] dark:text-white">Asset Distribution</CardTitle>
@@ -214,16 +214,11 @@ export default function AssetInformation() {
               Sampark TV and SSS Kits distribution over time
             </CardDescription>
           </CardHeader>
-          <CardContent className="h-[350px]">
+          <CardContent className="h-[400px] p-0">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 data={assetDistributionData}
-                margin={{
-                  top: 20,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
+                margin={{ top: 20, right: 20, left: 0, bottom: 5 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
                 <XAxis dataKey="month" stroke="#666666" />
@@ -250,16 +245,11 @@ export default function AssetInformation() {
               Sampark TV and SSS App usage percentage
             </CardDescription>
           </CardHeader>
-          <CardContent className="h-[350px]">
+          <CardContent className="h-[400px] p-0">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart
                 data={assetUsageData}
-                margin={{
-                  top: 20,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
+                margin={{ top: 20, right: 20, left: 0, bottom: 5 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
                 <XAxis dataKey="month" stroke="#666666" />
@@ -303,11 +293,11 @@ export default function AssetInformation() {
             </Select>
           </div>
         </CardHeader>
-        <CardContent>
-          <div className="grid gap-6 md:grid-cols-2 mb-6">
+        <CardContent className="p-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 p-4">
             <div className="h-[300px]">
               <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
+                <PieChart margin={{ top: 20, right: 20, left: 0, bottom: 5 }}>
                   <Pie
                     data={[
                       {
@@ -353,12 +343,7 @@ export default function AssetInformation() {
                     { district: "District D", installed: 2, synced: 1 },
                     { district: "District E", installed: 2, synced: 1 },
                   ]}
-                  margin={{
-                    top: 20,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                  }}
+                  margin={{ top: 20, right: 20, left: 0, bottom: 5 }}
                   layout="vertical"
                 >
                   <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
@@ -379,52 +364,54 @@ export default function AssetInformation() {
             </div>
           </div>
 
-          <Table>
-            <TableHeader className="bg-[#f8f8f8] dark:bg-[#2a2a2a]">
-              <TableRow>
-                <TableHead className="text-[#333333] dark:text-white">TV ID</TableHead>
-                <TableHead className="text-[#333333] dark:text-white">School</TableHead>
-                <TableHead className="text-[#333333] dark:text-white">District</TableHead>
-                <TableHead className="text-[#333333] dark:text-white">Block</TableHead>
-                <TableHead className="text-[#333333] dark:text-white">Installed</TableHead>
-                <TableHead className="text-[#333333] dark:text-white">Synced</TableHead>
-                <TableHead className="text-[#333333] dark:text-white">Last Sync</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {tvDistributionData.map((tv) => (
-                <TableRow key={tv.id} className="hover:bg-[#fff3e6] dark:hover:bg-[#3a3a3a]">
-                  <TableCell className="font-medium text-[#333333] dark:text-white">{tv.id}</TableCell>
-                  <TableCell className="text-[#333333] dark:text-white">{tv.school}</TableCell>
-                  <TableCell className="text-[#333333] dark:text-white">{tv.district}</TableCell>
-                  <TableCell className="text-[#333333] dark:text-white">{tv.block}</TableCell>
-                  <TableCell>
-                    {tv.installed ? (
-                      <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-100">
-                        <Check className="mr-1 h-3 w-3" /> Yes
-                      </span>
-                    ) : (
-                      <span className="inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:bg-red-900 dark:text-red-100">
-                        No
-                      </span>
-                    )}
-                  </TableCell>
-                  <TableCell>
-                    {tv.synced ? (
-                      <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-100">
-                        <Check className="mr-1 h-3 w-3" /> Yes
-                      </span>
-                    ) : (
-                      <span className="inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:bg-red-900 dark:text-red-100">
-                        No
-                      </span>
-                    )}
-                  </TableCell>
-                  <TableCell className="text-[#333333] dark:text-white">{tv.lastSync}</TableCell>
+          <div className="overflow-x-auto">
+            <Table>
+              <TableHeader className="bg-[#f8f8f8] dark:bg-[#2a2a2a]">
+                <TableRow>
+                  <TableHead className="text-[#333333] dark:text-white">TV ID</TableHead>
+                  <TableHead className="text-[#333333] dark:text-white">School</TableHead>
+                  <TableHead className="text-[#333333] dark:text-white">District</TableHead>
+                  <TableHead className="text-[#333333] dark:text-white">Block</TableHead>
+                  <TableHead className="text-[#333333] dark:text-white">Installed</TableHead>
+                  <TableHead className="text-[#333333] dark:text-white">Synced</TableHead>
+                  <TableHead className="text-[#333333] dark:text-white">Last Sync</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHeader>
+              <TableBody>
+                {tvDistributionData.map((tv) => (
+                  <TableRow key={tv.id} className="hover:bg-[#fff3e6] dark:hover:bg-[#3a3a3a]">
+                    <TableCell className="font-medium text-[#333333] dark:text-white">{tv.id}</TableCell>
+                    <TableCell className="text-[#333333] dark:text-white">{tv.school}</TableCell>
+                    <TableCell className="text-[#333333] dark:text-white">{tv.district}</TableCell>
+                    <TableCell className="text-[#333333] dark:text-white">{tv.block}</TableCell>
+                    <TableCell>
+                      {tv.installed ? (
+                        <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-100">
+                          <Check className="mr-1 h-3 w-3" /> Yes
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:bg-red-900 dark:text-red-100">
+                          No
+                        </span>
+                      )}
+                    </TableCell>
+                    <TableCell>
+                      {tv.synced ? (
+                        <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-100">
+                          <Check className="mr-1 h-3 w-3" /> Yes
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:bg-red-900 dark:text-red-100">
+                          No
+                        </span>
+                      )}
+                    </TableCell>
+                    <TableCell className="text-[#333333] dark:text-white">{tv.lastSync}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
         </CardContent>
       </Card>
     </div>

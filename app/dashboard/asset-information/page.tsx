@@ -10,7 +10,9 @@ export const metadata: Metadata = {
 export default function AssetInformationPage() {
   return (
     <DashboardLayout>
-      <AssetInformation />
+      <div className="flex-1 overflow-x-hidden">
+        <AssetInformation />
+      </div>
     </DashboardLayout>
   )
 }
